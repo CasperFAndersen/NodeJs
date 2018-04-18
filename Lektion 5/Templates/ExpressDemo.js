@@ -2,14 +2,23 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     app = express();
 
+var fs = require("fs");
+var id = 1;
+
+module.exports = id => fs.createReadStream(__dirname + "/" + id + ".json");
+
+
+
+
 app.use(bodyParser.json());
 
 
 
 app.get("/", (req, res) => {
-    res.json({ id: req.params.id, name: "node class" });
+    var clientInfo = fs.createReadStream(__dirname + "/" + id + ".json", { encoding: "utf8" });
+    clientInfo.on("data", info => res.send(JSON.parse(info).Name));
+    //clientInfo.on("data", info => console.log(info));
 });
-
 
 //query is for when the url has ? for the parameters.
 // /: id --> <req className="params id"
