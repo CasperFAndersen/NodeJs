@@ -19,7 +19,7 @@ harryPotter.save(function (err) {
     console.log('succeded!');
 })
 
-Book.find({}), function (err, book) {
+Book.find({ "title": "C#" }, function (err, books) {
     if (err) console.log(err);
     console.log(books);
-}
+});
