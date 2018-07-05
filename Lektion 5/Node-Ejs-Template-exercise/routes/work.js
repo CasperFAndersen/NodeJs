@@ -4,7 +4,7 @@ const router = express.Router();
 const workController = require('../controllers/workController/work');
 
 
-router.get('/', clientController.get_all)
+router.get('/', workController.get_all)
 router.post('/subtract', workController.subtract)
 
 module.exports = router;
